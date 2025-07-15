@@ -5,18 +5,12 @@ import React, {
     type FormEvent,
 } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
-import { InputMask } from "@react-input/mask";
-
-interface FormState {
-    firstName: string;
-    lastName: string;
-    phone: string;
-    email: string;
-    guess: string;
-    pin: string;
-}
+import PinField from "../PinField/PinField";
+import type FormState from "../../types/FormState";
+import { PRICE } from "../../constants/constants";
 
 const InterestForm: React.FC = () => {
+
     const [form, setForm] = useState<FormState>({
         firstName: "",
         lastName: "",
@@ -25,16 +19,20 @@ const InterestForm: React.FC = () => {
         guess: "",
         pin: "",
     });
-
+    const [submitted, setSubmitted] = useState<boolean>(false);
+    
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: value }));
+        setSubmitted(false);
     }, []);
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(form);
     };
+
+    const isCorrect = submitted && PRICE === Number(form.guess);
 
     return (
         <Box
@@ -94,21 +92,38 @@ const InterestForm: React.FC = () => {
                 value={form.guess}
                 onChange={handleChange}
                 margin="normal"
+                // if you like, show the red error outline automatically
+                error={submitted && !isCorrect}
+                helperText={
+                submitted
+                    ? isCorrect
+                    ? `🎉 Correct! It was $${PRICE}.`
+                    : `Sorry, it was $${PRICE}.`
+                    : undefined
+                }
+                sx={{
+                // override the default outline color when submitted
+                '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: submitted
+                    ? isCorrect
+                        ? 'green'
+                        : 'red'
+                    : undefined,
+                },
+                // also override on focus
+                '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: submitted
+                    ? isCorrect
+                        ? 'green'
+                        : 'red'
+                    : undefined,
+                },
+                }}
             />
 
-            <InputMask
-                mask="9999-9999-9999-9999"
-                replacement={{ "9": /\d/ }}
-                value={form.pin}
-                onChange={handleChange}
-                component={TextField}
-                fullWidth
-                label="Spidr PIN"
-                name="pin"
-                margin="normal"
-            />
+            <PinField submitted={submitted} setSubmitted={setSubmitted}/>
 
-            <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
+            <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }} onClick={() => {setSubmitted(true)}}>
                 Submit
             </Button>
         </Box>
