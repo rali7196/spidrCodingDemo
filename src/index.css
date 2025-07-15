@@ -1,9 +1,10 @@
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #181818cc !important;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    /* background-color: #181818cc !important; */
+    background-color: #252627 !important;
+    padding: 5em;
 }
-

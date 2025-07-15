@@ -1,0 +1,40 @@
+/* wrapper */
+.whiteTextField {
+}
+
+/* make the entered text white */
+.whiteTextField .MuiOutlinedInput-root {
+    color: #fff;
+}
+
+/* make the placeholder white */
+.whiteTextField .MuiOutlinedInput-input::placeholder {
+    color: #fff;
+    opacity: 1; /* override MUI’s default */
+}
+
+/* default (semi‑opaque) outline */
+.whiteTextField .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.6);
+    transition: border-color 0.2s ease;
+}
+
+/* full‑white outline on hover */
+.whiteTextField .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.whiteTextField
+    .MuiOutlinedInput-root.Mui-focused
+    .MuiOutlinedInput-notchedOutline {
+    border-color: #fff;
+}
+
+/* label styling */
+.whiteTextField .MuiInputLabel-root {
+    color: rgba(255, 255, 255, 0.7);
+}
+.whiteTextField .MuiInputLabel-root.Mui-focused {
+    color: #fff;
+}
+
+.MuiFormHelperText-root {
+    color: #56acbd !important;
+}

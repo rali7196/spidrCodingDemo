@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { SPIDR_PIN } from "../../constants/constants";
+import "../../App.css";
 
 interface PinFieldProps {
     submitted: boolean;
@@ -10,7 +11,7 @@ interface PinFieldProps {
 const PinField: React.FC<PinFieldProps> = (props: PinFieldProps) => {
     const [display, setDisplay] = useState("");
 
-    const handleChange = (e: { target: { value: string; }; }) => {
+    const handleChange = (e: { target: { value: string } }) => {
         // 1) strip non-digits, 2) cap at 16
         const raw = e.target.value.replace(/\D/g, "").slice(0, 16);
         // 3) insert hyphens every 4 digits
@@ -19,7 +20,7 @@ const PinField: React.FC<PinFieldProps> = (props: PinFieldProps) => {
         props.setSubmitted(false);
     };
 
-    const isCorrect = props.submitted && display === SPIDR_PIN
+    const isCorrect = props.submitted && display === SPIDR_PIN;
     return (
         <TextField
             label="Spidr Pin"
@@ -27,6 +28,7 @@ const PinField: React.FC<PinFieldProps> = (props: PinFieldProps) => {
             value={display}
             onChange={handleChange}
             fullWidth
+            className="whiteTextField"
             inputProps={{
                 inputMode: "numeric", // mobile number pad
                 style: {
@@ -37,11 +39,12 @@ const PinField: React.FC<PinFieldProps> = (props: PinFieldProps) => {
             helperText={
                 props.submitted
                     ? isCorrect
-                        ? `🎉 Correct! It was $${SPIDR_PIN}.`
-                        : `Sorry, it was $${SPIDR_PIN}.`
+                        ? `🎉 Correct! It was ${SPIDR_PIN}.`
+                        : `Sorry, it was ${SPIDR_PIN}.`
                     : undefined
             }
             sx={{
+                margin: "16px 0 8px",
                 // override the default outline color when submitted
                 "& .MuiOutlinedInput-notchedOutline": {
                     borderColor: props.submitted
