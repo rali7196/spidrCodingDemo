@@ -39,15 +39,7 @@ const InterestForm: React.FC = () => {
         <Box
             component="form"
             onSubmit={handleSubmit}
-            // sx={{
-            //     maxWidth: 400,
-            //     mx: "auto",
-            //     p: 3,
-            //     bgcolor: "background.paper",
-            //     borderRadius: 2,
-            //     boxShadow: 3,
-            // }}
-            className={styles["glass-box"]}
+            className={`${styles["glass-box"]} ${submitted ? styles['slide-out'] : ''}`}
         >
             <Typography variant="h5" gutterBottom style={{ color: "#56acbd" }}>
                 Interest Form
@@ -101,13 +93,6 @@ const InterestForm: React.FC = () => {
                 margin="normal"
                 // if you like, show the red error outline automatically
                 error={submitted && !isCorrect}
-                helperText={
-                    submitted
-                        ? isCorrect
-                            ? `🎉 Correct! It was $${PRICE}.`
-                            : `Sorry, it was $${PRICE}.`
-                        : undefined
-                }
                 sx={{
                     // override the default outline color when submitted
                     "& .MuiOutlinedInput-notchedOutline": {

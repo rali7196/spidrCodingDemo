@@ -14,14 +14,14 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    min-width: 150%;
+    min-width: 50%;
     gap: 25px;
 }
 
 .hollowButton {
     background: transparent;
     color: white !important;
-    text-transform: lowercase;
+    text-transform: none;
     padding: 8px 16px; /* py:1 (8px), px:2 (16px) */
     border: 1px solid white !important;
     border-radius: 4px;
@@ -33,4 +33,19 @@
 .hollowButton:hover {
     border-color: #56acbd !important;
     color: #56acbd !important;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+}
+
+.slide-out {
+    animation: slideOut 0.5s ease forwards;
 }

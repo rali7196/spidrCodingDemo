@@ -36,13 +36,6 @@ const PinField: React.FC<PinFieldProps> = (props: PinFieldProps) => {
                     letterSpacing: "0.1em",
                 },
             }}
-            helperText={
-                props.submitted
-                    ? isCorrect
-                        ? `🎉 Correct! It was ${SPIDR_PIN}.`
-                        : `Sorry, it was ${SPIDR_PIN}.`
-                    : undefined
-            }
             sx={{
                 margin: "16px 0 8px",
                 // override the default outline color when submitted

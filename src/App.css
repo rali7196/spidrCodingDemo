@@ -39,3 +39,25 @@
 .MuiFormHelperText-root {
     color: #56acbd !important;
 }
+
+#root {
+    width: 100%;
+}
+
+.logoContainer {
+  position: relative;
+  /* this custom‑property will be set at runtime */
+  --line-height: 0px;
+}
+
+.logoContainer::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;              /* pin the bottom of the line to the top of the container */
+  left: 50%;                 /*center over the container*/
+  transform: translateX(-50%);
+  width: 3px;
+  height: var(--line-height);/* use the measured distance */
+  background-color: #b9bdc2;
+  pointer-events: none;
+}
