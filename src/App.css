@@ -1,5 +1,6 @@
 /* wrapper */
 .whiteTextField {
+    margin: 0 !important;
 }
 
 /* make the entered text white */

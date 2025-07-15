@@ -130,14 +130,19 @@ const InterestForm: React.FC = () => {
             />
 
             <PinField submitted={submitted} setSubmitted={setSubmitted} />
-
-            <Button
-                variant="outlined"
-                className={styles['hollowButton']}
-                onClick={() => {setSubmitted(true)}}
-            >
-                Submit
-            </Button>
+            
+            <div style={{
+                display: "flex",
+                justifyContent: "center"
+            }}>
+                <Button
+                    variant="outlined"
+                    className={styles['hollowButton']}
+                    onClick={() => {setSubmitted(true)}}
+                >
+                    Submit
+                </Button>
+            </div>
         </Box>
     );
 };
