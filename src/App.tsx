@@ -4,7 +4,7 @@ import theme from "./theme";
 import InterestForm from "./components/InterestForm/InterestForm";
 
 const App: React.FC = () => {
-    const logoRef = useRef(null);
+    const logoRef = useRef<HTMLElement>(null);
 
     const updateLine = () => {
         if (!logoRef.current) return;
