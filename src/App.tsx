@@ -1,9 +1,21 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
 import InterestForm from "./components/InterestForm/InterestForm";
+import ThankYouCard from "./components/ThankYouCard/ThankYouCard";
+import type FormState from "./types/FormState";
 
 const App: React.FC = () => {
+    const [form, setForm] = useState<FormState>({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        guess: "",
+        pin: "",
+    });
+    const [submitted, setSubmitted] = useState<boolean>(false);
+
     const logoRef = useRef<HTMLDivElement>(null);
 
     const updateLine = () => {
@@ -30,7 +42,10 @@ const App: React.FC = () => {
                     width: "100%",
                 }}
             >
-                <InterestForm />
+                <div style={{ position: "relative", minWidth: "50%" }}>
+                    <InterestForm form={form} submitted={submitted} setForm={setForm} setSubmitted={setSubmitted}/>
+                    <ThankYouCard form={form} show={submitted} setShow={setSubmitted}/>
+                </div>
                 <div
                     style={{
                         display: "flex",

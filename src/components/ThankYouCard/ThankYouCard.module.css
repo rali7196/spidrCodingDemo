@@ -1,0 +1,22 @@
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.slideIn {
+    animation: slideIn 0.5s ease forwards;
+}
+
+.initialState {
+    opacity: 0;
+    transform: translateX(50px);
+    pointer-events: none;
+}
+
+

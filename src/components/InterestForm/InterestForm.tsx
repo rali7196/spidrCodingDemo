@@ -1,45 +1,39 @@
 import React, {
     useCallback,
-    useState,
     type ChangeEvent,
     type FormEvent,
 } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import PinField from "../PinField/PinField";
 import type FormState from "../../types/FormState";
-import { PRICE } from "../../constants/constants";
 import styles from "./InterestForm.module.css";
 import "../../App.css";
 
-const InterestForm: React.FC = () => {
-    const [form, setForm] = useState<FormState>({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        guess: "",
-        pin: "",
-    });
-    const [submitted, setSubmitted] = useState<boolean>(false);
+interface InterestFormProps {
+    form: FormState;
+    setForm: React.Dispatch<React.SetStateAction<FormState>>;
+    submitted: boolean;
+    setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const InterestForm: React.FC<InterestFormProps> = (
+    props: InterestFormProps
+) => {
     const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value }));
-        setSubmitted(false);
+        props.setForm((prev) => ({ ...prev, [name]: value }));
     }, []);
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        console.log(form);
+        console.log(props.form);
     };
-
-    const isCorrect = submitted && PRICE === Number(form.guess);
 
     return (
         <Box
             component="form"
             onSubmit={handleSubmit}
-            className={`${styles["glass-box"]} ${submitted ? styles['slide-out'] : ''}`}
+            className={`glass-box ${props.submitted ? styles["slide-out"] : ""}`}
         >
             <Typography variant="h5" gutterBottom style={{ color: "#56acbd" }}>
                 Interest Form
@@ -49,7 +43,7 @@ const InterestForm: React.FC = () => {
                 fullWidth
                 label="First Name"
                 name="firstName"
-                value={form.firstName}
+                value={props.form.firstName}
                 onChange={handleChange}
                 margin="normal"
                 className="whiteTextField"
@@ -58,7 +52,7 @@ const InterestForm: React.FC = () => {
                 fullWidth
                 label="Last Name"
                 name="lastName"
-                value={form.lastName}
+                value={props.form.lastName}
                 onChange={handleChange}
                 margin="normal"
                 className="whiteTextField"
@@ -67,7 +61,7 @@ const InterestForm: React.FC = () => {
                 fullWidth
                 label="Phone Number"
                 name="phone"
-                value={form.phone}
+                value={props.form.phone}
                 onChange={handleChange}
                 margin="normal"
                 className="whiteTextField"
@@ -77,7 +71,7 @@ const InterestForm: React.FC = () => {
                 label="Email Address"
                 name="email"
                 type="email"
-                value={form.email}
+                value={props.form.email}
                 onChange={handleChange}
                 margin="normal"
                 className="whiteTextField"
@@ -88,42 +82,25 @@ const InterestForm: React.FC = () => {
                 name="guess"
                 type="number"
                 className="whiteTextField"
-                value={form.guess}
+                value={props.form.guess}
                 onChange={handleChange}
                 margin="normal"
-                // if you like, show the red error outline automatically
-                error={submitted && !isCorrect}
-                sx={{
-                    // override the default outline color when submitted
-                    "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: submitted
-                            ? isCorrect
-                                ? "green"
-                                : "red"
-                            : undefined,
-                    },
-                    // also override on focus
-                    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                        {
-                            borderColor: submitted
-                                ? isCorrect
-                                    ? "green"
-                                    : "red"
-                                : undefined,
-                        },
-                }}
             />
 
-            <PinField submitted={submitted} setSubmitted={setSubmitted} />
-            
-            <div style={{
-                display: "flex",
-                justifyContent: "center"
-            }}>
+            <PinField submitted={props.submitted} setSubmitted={props.setSubmitted} setForm={props.setForm}/>
+
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                }}
+            >
                 <Button
                     variant="outlined"
-                    className={styles['hollowButton']}
-                    onClick={() => {setSubmitted(true)}}
+                    className={styles["hollowButton"]}
+                    onClick={() => {
+                        props.setSubmitted(true);
+                    }}
                 >
                     Submit
                 </Button>

@@ -14,6 +14,14 @@
     opacity: 1; /* override MUI’s default */
 }
 
+h5 {
+    color: #56acbd;
+}
+
+p, h6, strong {
+    color: #fff;
+}
+
 /* default (semi‑opaque) outline */
 .whiteTextField .MuiOutlinedInput-notchedOutline {
     border-color: rgba(255, 255, 255, 0.6);
@@ -36,10 +44,6 @@
     color: #fff;
 }
 
-.MuiFormHelperText-root {
-    color: #56acbd !important;
-}
-
 #root {
     width: 100%;
 }
@@ -60,4 +64,24 @@
   height: var(--line-height);/* use the measured distance */
   background-color: #b9bdc2;
   pointer-events: none;
+}
+
+.glass-box {
+    /* semi‑transparent background */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* backdrop blur for the frosted look */
+    backdrop-filter: blur(50px);
+    /* soft white border to define the edges */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* gentle shadow for depth */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* rounded corners */
+    border-radius: 0.5rem;
+    /* ensure the blur only applies inside the box */
+    background-clip: padding-box;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+    gap: 25px;
 }
