@@ -25,7 +25,7 @@ const PinField: React.FC<PinFieldProps> = (props: PinFieldProps) => {
         const raw = e.target.value.replace(/\D/g, "").slice(0, 16);
         // 3) insert hyphens every 4 digits
         const withHyphens = raw.match(/.{1,4}/g)?.join("-") || raw;
-        props.setForm((prev) => ({...prev, 'pin':withHyphens}))
+        props.setForm((prev) => ({...prev, pin:raw}))
         setDisplay(withHyphens);
         props.setErrors((prev) => {
             const updated = { ...prev };
