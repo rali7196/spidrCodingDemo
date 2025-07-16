@@ -60,6 +60,8 @@ const InterestForm: React.FC<InterestFormProps> = (props) => {
 
         if (props.form.pin.length != 16) newErrors.pin = "Must be 16 digits long";
 
+        console.log(props.form, props.form.pin.length);
+
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
             return;
