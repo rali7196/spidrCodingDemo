@@ -6,8 +6,8 @@ This project is a coding demonstration that showcases a modern, responsive, and 
 
 - **Modern, Responsive Design:** The project features a clean, minimalist design that is optimized for all screen sizes. It uses a simple color palette and a clear, easy-to-read font to create a professional and user-friendly experience.
 - **Interest Form:** The core of the project is an interest form that allows users to submit their contact information and a message. The form is easy to use and includes validation to ensure that all required fields are filled out correctly.
-- **PIN Field:** The form also includes a PIN field that allows users to enter a 16-digit PIN. The PIN is masked for security, and users can reveal it by clicking on an icon.
-- **Thank You Card:** After submitting the form, users are shown a thank you card that confirms their submission. The card is designed to be simple and elegant, and it provides a clear and concise message to the user.
+- **PIN Field:** The form also includes a PIN field that allows users to enter a 16-digit PIN. The PIN is masked for security, and users can reveal it by clicking on an icon. It is also hidden by default and can be revealed by clicking a button.
+- **Thank You Card:** After submitting the form, users are shown a thank you card that confirms their submission. The card is designed to be simple and elegant, and it provides a clear and concise message to the user. It also displays different text depending on whether the user guesses the correct price of $79.
 
 ## Alignment with Spidr Design
 

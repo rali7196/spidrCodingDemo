@@ -51,11 +51,11 @@ const ThankYouCard: React.FC<ThankYouCardProps> = (
 
             {/* 3) Success / failure message */}
             {props.form.guess === PRICE ? (
-                <Typography variant="h6" color="success.main">
+                <Typography variant="h6" className={styles['successText']}>
                     🎉 Congratulations! You guessed the correct price!
                 </Typography>
             ) : (
-                <Typography variant="body1" color="error.main">
+                <Typography variant="body1" className={styles['errorText']}>
                     ❌ Sorry, that’s not quite right. Please try again!
                 </Typography>
             )}

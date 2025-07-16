@@ -19,4 +19,12 @@
     pointer-events: none;
 }
 
+.errorText {
+    color: #e79595;
+}
+
+.successText {
+    color: rgb(112, 182, 182);
+}
+
 
