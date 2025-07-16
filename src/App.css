@@ -18,6 +18,11 @@ h5 {
     color: #56acbd;
 }
 
+::selection {
+  background: #56acbd;
+  color: #fff;              /* pick a contrasting text color */
+}
+
 p, h6, strong {
     color: #fff;
 }
@@ -84,4 +89,21 @@ p, h6, strong {
     flex-direction: column;
     min-width: 50%;
     gap: 25px;
+}
+
+.hollowButton {
+    background: transparent;
+    color: white !important;
+    text-transform: none !important;
+    padding: 8px 16px; /* py:1 (8px), px:2 (16px) */
+    border: 1px solid white !important;
+    border-radius: 4px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    transition: color 0.2s ease, border-color 0.2s ease !important;
+    width: fit-content;
+}
+
+.hollowButton:hover {
+    border-color: #56acbd !important;
+    color: #56acbd !important;
 }

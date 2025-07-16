@@ -5,9 +5,9 @@ import { PRICE } from "../../constants/constants";
 import type FormState from "../../types/FormState";
 
 interface ThankYouCardProps {
-    form: FormState
+    form: FormState;
     show: boolean;
-    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ThankYouCard: React.FC<ThankYouCardProps> = (
@@ -48,9 +48,6 @@ const ThankYouCard: React.FC<ThankYouCardProps> = (
             <Typography variant="subtitle1">
                 <strong>Your guess:</strong> ${props.form.guess}
             </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-                <strong>Your secret PIN: {props.form.pin}</strong>{" "}
-            </Typography>
 
             {/* 3) Success / failure message */}
             {props.form.guess === PRICE ? (
@@ -62,7 +59,15 @@ const ThankYouCard: React.FC<ThankYouCardProps> = (
                     ❌ Sorry, that’s not quite right. Please try again!
                 </Typography>
             )}
-            <Button onClick={() => props.setShow(false)}>Test</Button>
+            <div style={{display:'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <Button
+                    onClick={() => props.setShow(false)}
+                    variant="outlined"
+                    className="hollowButton"
+                >
+                    Edit your submission
+                </Button>
+            </div>
         </Box>
     );
 };
